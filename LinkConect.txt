@@ -1,0 +1,18 @@
+https://github.com/CarlosRodasMT/Pruebas.git
+https://cloud.oracle.com/?region=us-ashburn-1&tenant=carlosrodasmt&provider=OracleIdentityCloudService&username=carlos.rodas.mt%40usa.edu.co&source=email
+https://minticprojectg42.atlassian.net/jira/software/projects/PMTC3/boards/2
+
+Manejadores Cloud
+https://gaace7eeef4f5e2-cloud.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/cloud/cloud
+
+Manejadores Client
+https://gaace7eeef4f5e2-cloud.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/client/client
+
+Manejadores Message
+https://gaace7eeef4f5e2-cloud.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/message/message
+
+AJAX en el head del html
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/misFunciones.js"></script>
+
+instalar el liveserver en VSCODE

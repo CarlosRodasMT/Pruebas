@@ -6,6 +6,8 @@
   <title>Nubes</title>
   <link href="https://images.vexels.com/media/users/3/127173/isolated/lists/7557c099025d716fea37ad5e4dafd2b1-linea-de-nube-azul-icon-svg.png" rel="icon" type="image/png" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script type="text/javascript" src="js/Funciones_R2.js"></script>
 </head>
 
 <body class="antialiased text-slate-200 bg-slate-900">
@@ -31,30 +33,33 @@
           <div class="lg:w-full md:w-full bg-neutral-50 rounded-lg px-20 py-2 flex flex-col md:ml-auto w-full mt-2 md:mt-0 relative z-10 shadow-md">
             <div class="relative mb-4">
               <label for="id" class="leading-7 text-sm text-gray-600">ID</label>
-              <input type="id" id="id" name="id" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+              <input type="number" id="id" placeholder="Ingrese ID" name="id" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
             </div>
             
             <div class="relative mb-4">
               <label for="proveedor" class="leading-7 text-sm text-gray-600">Proveedor</label>
-              <input type="proveedor" id="proveedor" name="proveedor" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+              <input type="text" id="proveedor" placeholder="Ingrese Proveedor" name="proveedor" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
             </div>
 
             <div class="relative mb-4">
               <label for="modelo" class="leading-7 text-sm text-gray-600">Modelo</label>
-              <input type="modelo" id="modelo" name="modelo" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+              <input type="text" id="modelo" placeholder="Ingrese Modelo" name="modelo" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
             </div>
             
             <div class="relative mb-4">
-              <label for="cat_id" class="leading-7 text-sm text-gray-600">ID Categoría</label>
-              <input type="cat_id" id="cat_id" name="cat_id" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+              <label for="category_id" class="leading-7 text-sm text-gray-600">ID Categoría</label>
+              <input type="number" id="category_id" placeholder="Ingrese ID Categoria" name="category_id" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
             </div>
 
             <div class="relative mb-4">
               <label for="nombre" class="leading-7 text-sm text-gray-600">Nombre</label>
-              <input type="nombre" id="nombre" name="nombre" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+              <input type="text" id="nombre" placeholder="Ingrese nombre" name="nombre" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
             </div>
             <br>
-            <button class="text-white font-bold bg-[#4164B7] border-0 py-2 px-6 focus:outline-none hover:bg-[#EC2468] rounded text-xl">Crear</button>
+            <button onclick="crearNube()"
+                    class="text-white font-bold bg-[#4164B7] border-0 py-2 px-6 focus:outline-none hover:bg-[#EC2468] rounded text-xl">
+              Crear
+            </button>
             <br>
           </div>
         </div>
