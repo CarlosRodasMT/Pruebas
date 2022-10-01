@@ -11,7 +11,7 @@
 </head>
 
 <body class="antialiased text-slate-200 bg-slate-900">
-  <div class="flex-block max-w-xl p-4 md:pd-8 mx-auto mt-8">
+  <div class="flex-block max-w-5xl p-4 md:pd-8 mx-auto mt-8">
     <div class="bg-white shadow overflow-hidden rounded-lg">
       <div class="px-4 py-2 flex justify-between">
         <div class="mx-auto">
@@ -28,7 +28,7 @@
       </div>
 
       <div class="border-t border-gray-200">
-                
+      <div class="grid grid-cols-2 gap-1">           
         <div class="container px-4 mx-auto">
           <div class="lg:w-full md:w-full bg-neutral-50 rounded-lg px-20 py-2 flex flex-col md:ml-auto w-full mt-2 md:mt-0 relative z-10 shadow-md">
             <div class="relative mb-4">
@@ -55,15 +55,28 @@
               <label for="nombre" class="leading-7 text-sm text-gray-600">Nombre</label>
               <input type="text" id="nombre" placeholder="Ingrese nombre" name="nombre" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
             </div>
-            <br>
-            <button onclick="crearNube()"
-                    class="text-white font-bold bg-[#4164B7] border-0 py-2 px-6 focus:outline-none hover:bg-[#EC2468] rounded text-xl">
-              Crear
-            </button>
-            <br>
+            
           </div>
         </div>
 
+        <div class="container mt-2 px-4 mx-auto">
+          <div class="lg:w-full md:w-full bg-neutral-50 rounded-lg px-2 py-2 flex flex-col md:ml-auto w-full mt-2 md:mt-0 relative z-10 shadow-md">
+            <div id="res_Nube"></div>
+          </div>
+          </div>
+        </div>
+        <br>
+        <div class="container mb-2 mt-2 mx-auto text-center">
+          <button onclick="crearNube()"
+                  class="text-white font-bold bg-[#4164B7] border-0 py-2 px-6 focus:outline-none hover:bg-[#EC2468] rounded text-xl">
+            Crear
+          </button>
+          <button onclick='leerDatos("nubes")'
+                  class="text-white font-bold bg-[#4164B7] border-0 py-2 px-6 focus:outline-none hover:bg-[#EC2468] rounded text-xl">
+            Consultar
+          </button>
+        </div>
+        <br>
         <div class="container mb-2 mt-2 mx-auto text-center">
           
           <a class="text-sm font-bold text-gray-500 text-center hover:text-gray-900 cursor-pointer"
@@ -73,6 +86,7 @@
           
         </div>
      
+      </div>
       </div>
     </div>
   </div>

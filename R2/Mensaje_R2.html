@@ -41,12 +41,9 @@
               <textarea id="text" name="message" placeholder="Ingrese mensaje" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
             </div>  
             <br>
-            <button onclick="registrarMensaje()"
-                    class="text-white font-bold bg-[#4164B7] border-0 py-2 px-6 focus:outline-none hover:bg-[#EC2468] rounded text-xl">
-              Registrar
-            </button>
+            </div>
             <br>
-          </div>
+           
         </div>
 
         <div class="container mt-2 px-4 mx-auto">
@@ -76,7 +73,20 @@
         </div>
         </div>
         </div>
-        <br>
+        
+        <div class="container mb-2 mt-2 mx-auto text-center">
+          <button onclick="registrarMensaje()"
+                  class="text-white font-bold bg-[#4164B7] border-0 py-2 px-6 focus:outline-none hover:bg-[#EC2468] rounded text-xl">
+            Registrar
+          </button>
+          <button onclick='leerDatos("msjs")'
+                  class="text-white font-bold bg-[#4164B7] border-0 py-2 px-6 focus:outline-none hover:bg-[#EC2468] rounded text-xl">
+            Consultar
+          </button>
+        </div>
+
+          <br>
+
         <div class="border-t border-gray-200">
           <div class="container mb-4 mt-4 mx-auto text-center">
             
