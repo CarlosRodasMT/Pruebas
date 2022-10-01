@@ -7,9 +7,11 @@ https://gaace7eeef4f5e2-cloud.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/cl
 
 Manejadores Client
 https://gaace7eeef4f5e2-cloud.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/client/client
+"id":1,"name":"Juan","email":"juan@correo.co","age":33
 
 Manejadores Message
 https://gaace7eeef4f5e2-cloud.adb.us-ashburn-1.oraclecloudapps.com/ords/admin/message/message
+"id":1,"messagetext":"Este es un mensaje"
 
 AJAX en el head del html
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

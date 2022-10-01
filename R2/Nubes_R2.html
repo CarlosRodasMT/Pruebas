@@ -27,7 +27,7 @@
         
       </div>
 
-      <div class="border-t border-gray-200">
+      <div class="border-t border-gray-300">
       <div class="grid grid-cols-2 gap-1">           
         <div class="container px-4 mx-auto">
           <div class="lg:w-full md:w-full bg-neutral-50 rounded-lg px-20 py-2 flex flex-col md:ml-auto w-full mt-2 md:mt-0 relative z-10 shadow-md">
@@ -56,28 +56,27 @@
               <input type="number" id="category_id" placeholder="Ingrese ID Categoria" name="category_id" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
             </div>
 
+            <div class="container mb-2 mt-2 mx-auto text-center">
+              <button onclick='crearReg("cloud")'
+                      class="text-white font-bold bg-[#4164B7] border-0 py-2 px-6 focus:outline-none hover:bg-[#EC2468] rounded text-xl">
+                Crear
+              </button>
+              
+            </div>
                         
           </div>
         </div>
 
-        <div class="container mt-2 px-4 mx-auto">
+        <div class="container mt-5 px-4 mx-auto">
           <div class="lg:w-full md:w-full bg-neutral-50 rounded-lg px-2 py-2 flex flex-col md:ml-auto w-full mt-2 md:mt-0 relative z-10 shadow-md" id="res_tabla">
             
           </div>
           </div>
         </div>
         <br>
-        <div class="container mb-2 mt-2 mx-auto text-center">
-          <button onclick='crearReg("cloud")'
-                  class="text-white font-bold bg-[#4164B7] border-0 py-2 px-6 focus:outline-none hover:bg-[#EC2468] rounded text-xl">
-            Crear
-          </button>
-          <button onclick='leerDatos("cloud")'
-                  class="text-white font-bold bg-[#4164B7] border-0 py-2 px-6 focus:outline-none hover:bg-[#EC2468] rounded text-xl">
-            Modificar
-          </button>
-        </div>
+        
         <br>
+        <div class="border-t border-gray-300">
         <div class="container mb-2 mt-2 mx-auto text-center">
           
           <a class="text-sm font-bold text-gray-500 text-center hover:text-gray-900 cursor-pointer"
@@ -86,6 +85,7 @@
           </a>
           
         </div>
+      </div>
      
       </div>
       </div>
