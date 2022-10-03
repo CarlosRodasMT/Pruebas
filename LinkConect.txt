@@ -17,4 +17,11 @@ AJAX en el head del html
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript" src="js/misFunciones.js"></script>
 
+Instancia Oracle
+IP-> 129.80.118.179
+
+
+
+
+
 instalar el liveserver en VSCODE
