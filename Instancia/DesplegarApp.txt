@@ -1,0 +1,17 @@
+-Descargar la última versión del código fuente a través de git.
+
+git clone url-repositorio /* url-repositorio corresponde a la url proporcionada por github
+cd nombrecarpeta /* Entrar a la carpeta del proyecto (ls muestra la lista de carpetas).
+
+
+-Compilar el código a través de maven.
+
+mvn clean package -DskipTests /*Compila el código, salta las pruebas para no tener problemas al elegir el perfil.
+				las correcciones las haremos en nuestra máquina local y subiremos los cambios al repositorio.
+				Cada vez que deseemos actualizar los cambios escribiremos git pull
+
+-Ejecutar el archivo jar a través de java
+cd target /*en carpeta target se encuentra el ejecutable
+sudo java -jar -Dspring.profiles.active=prod archivo.jar /*sudo para tener permisos, ejecutamos la app. prod equivale al perfil de producción
+							   archivo.jar es el nombre del archivo .jar que se encuentre en la carpeta target.
+

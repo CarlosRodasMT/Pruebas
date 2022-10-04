@@ -1,0 +1,32 @@
+
+DB MySQL -> MySQLDB_C3_G42_CR
+Standalone
+Username: admin
+Pass: 37Rhodes10*
+VCN: vcn_C3_G42_CR
+Subnet: subnet_C3_G42_CR (pública)
+
+Base de datos local, basada en archivos en Disco duro
+
+Ajustar el archivo de configuración .properties en el perfil producción.
+
+spring.datasource.url=jdbc:h2:mem:testdb	/*establece que la base de datos será guardada en memoria pero se elimina en cada reinicio
+spring.datasource.url=jdbc:h2:file:/data/demo	/*almacena la base de datos en un archivo
+
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=password
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+
+*crear un archivo con un perfil solamente para esta configuración cuando se requiera usar.
+
+Agregar en el archivo pom.xml la dependencia del conector JDBC para el motor de base de datos basado en archivos
+Agregar dependencia
+...
+<dependency>
+	<groupId>com.h2database</groupId>
+	<artifactId>h2</artifactId>
+	<version>1.4.200</version>
+	<scope>runtime</scope>
+</dependency>
+</dependencies>
