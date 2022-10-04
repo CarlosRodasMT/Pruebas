@@ -1,5 +1,11 @@
+Repositorio
 https://github.com/CarlosRodasMT/Pruebas.git
+Oracle
 https://cloud.oracle.com/?region=us-ashburn-1&tenant=carlosrodasmt&provider=OracleIdentityCloudService&username=carlos.rodas.mt%40usa.edu.co&source=email
+carlos.rodas.mt@usa.edu.co
+10Rhodes37*
+
+Jira
 https://minticprojectg42.atlassian.net/jira/software/projects/PMTC3/boards/2
 
 Manejadores Cloud
