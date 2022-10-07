@@ -1,0 +1,14 @@
+package com.example.****;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+/* Las palabras precedidas por una arroba se llaman anotaciones, son las instrucciones que me permiten usar las librerías de SpringBoot
+@SpringBootAplication  
+public class Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+
+}

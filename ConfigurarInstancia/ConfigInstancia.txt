@@ -1,4 +1,4 @@
-129.80.118.179
+132.145.216.225
 
 Conexión segura a la Instancia:
 
@@ -6,6 +6,8 @@ Conexión segura a la Instancia:
 >>chmod 400 llave-privada.sshkey /*donde llave-privada.key corresponde al nombre del archivo de la llave privada que allí se encuentra
 >>ssh -i llave-privada.key opc@ip-instancia /* e llavep-privada.key es el archivo de la llave privada y se debe reemplazar ip-instancia por la dirección ip pública de la instancia.
 >>yes
+
+primero instalar el httpd apache
 
 sudo yum update 			/*Actualiza SW de la instancia
 y					/*Autoriza

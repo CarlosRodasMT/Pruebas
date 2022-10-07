@@ -1,0 +1,59 @@
+Nuevo Proyect
+>Java para Maven
+>Springboot Initializr Project
+>Nombre R3_G42_CR
+>Java v11
+>Version 2.6.12 Spring Boot
+>Dependencias:
+  SpringBoot Dev_tools
+  Spring Web
+  Spring data JPA
+  H2 Database
+  Rest Repositories
+>Project Name R3_G42_CR, todo seleccionado, finalizar
+> Click derecho clean and build
+>pom - paquetes y versiones
+>Se usa Source Package y Other Source
+
+en Other Source edito el application properties
+
+en Source Package/com.example.demo click derecho y creo 5 Java Packages (Modelo, Interface, Repositorio, Servicio, Controlador)
+
+en el paquete de Modelo, nueva Java Class (Category, Cloud, Client, Message, Reservation)
+
+En la clase modelo voy a ejecutar el codigo para crear las tablas (Category.java, Cloud.java, Client.java, Message.java, Reservation.java)
+
+En el Netbeans, habilitar las opciones para insertar los import y los getter y setter automáticos:
+	tools->plugins-> Java SE debe estar instalado.
+
+Creo dentro del paquete Modelo las clases para las tablas (Category.java, Cloud.java, Client.java, Message.java, Reservation.java)
+
+Instalar el software de base de datos de H2!!
+
+Una vez finalice de realizar los códigos de los modelos, corro el archivo desde el ...Application.java para validar que no haya errores.
+
+verificar las tabla en H2 mediante -> http://localhost:8080/h2-console -> configurar los datos que están en el application.properties
+
+CLASE 9 - INTERFACE
+Se crea una java Interface dentro del paquete Interfaces correspondiente una para cada Modelo. Las interfaces nos permiten heredar métodos, librerías o dependencias. En este caso la de JPA
+(CategoryInterface.java, CloudInterface.java, ClientInterface.java, MessageInterface.java, ReservationInterface.java)
+Extiendo la interface a través del CrudRepository para poder utilizar sus métodos (save(crear y actualizar), findById(buscar dentro de la tabla según un ID), findAll()(todos los elementos de una tabla), delete() (eliminar))
+al CrudRepository le debo pasar el nombre de la tabla y el tipo de dato de la llave de la tabla.
+Ejecuto Clean and Build.
+
+REPOSITORIO
+Se crea una java class como (CategoryRepository.java, CloudRepository.java, ClientRepository.java, MessageRepository.java, ReservationRepository.java)
+Se anota la clase como repositorio y se crean 3 clases de findAll, findById y save definiendo una variable como tipo interface 
+
+SERVICIO
+Se crea una java class como (CategoryService.java, CloudService.java, ClientService.java, MessageService.java, ReservationService.java)
+traemos el repositorio definiendo el objeto correspondiente.
+Esta es la capa donde podemos ejecutar reglas de negocio y crear seguridades.
+El GET no cambia pero se usan los métodos del repositorio.
+
+se compila desde el application para verificar por errores. si sale 8080 ocupado hay alguna instancia corriendo.
+
+
+
+
+

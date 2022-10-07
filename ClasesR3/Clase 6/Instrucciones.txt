@@ -1,0 +1,9 @@
+Luego de tener esto con el proyecto configurado le damos desde el PROYECTO a Clean and Build
+Clean and Build reinstala todos los paquetes.
+Debe terminar con un "Build Success"
+Siempre los programas se ejecutan desde la clase de "Application" con click derecho Run File
+Luego se valida revisando la linea de Tomcat Started on Port(s) 8080
+en una nueva pestaña de chrome se valida la ejecución del proyecto con localhost:8080/saludar/hola
+debe abrir una página que diga HOLA MUNDO 2022.
+Dependencia Springboot DevTools reejecuta el app ante cualquier modificación y guardado.
+Error 404 siempre es un error de la URL (mal escrita). 

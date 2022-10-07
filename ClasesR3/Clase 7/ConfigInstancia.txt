@@ -1,0 +1,53 @@
+132.145.216.225
+
+Conexión segura a la Instancia:
+
+click derecho y open git bash here /*En carpeta de la clave privada
+ssh -i ssh-key-2022-10-06.key opc@132.145.216.225 /*ssh-key-AÑO-MES-DIA.key es el archivo de la llave privada y se debe reemplazar la ip por la dirección ip pública de la instancia.
+yes
+
+instalar el httpd apache
+sudo yum install -y httpd
+sudo systemctl enable httpd
+sudo systemctl restart httpd
+sudo firewall-cmd --add-service=http --permanent
+sudo firewall-cmd --reload
+
+instala Git Bash
+sudo yum install git			/*Instala GIT
+y					/*Autoriza
+cd /var/www/				/*Ingreso a carpeta www
+ls					/*valido contenido carpeta
+sudo chmod 777 html			/*Concedo permisos desde carpeta www
+cd html					/*Ingreso a carpeta html
+
+Clonar repositorio
+git clone https://github.com/CarlosRodasMT/Pruebas.git /*Clonar repositorio GITHUB
+37Rhodes10*   CarlosRodasMT
+
+
+sudo yum update 			/*Actualiza SW de la instancia
+y					/*Autoriza
+
+git --version				/*Valida versión GIT instalada
+sudo yum install java-11-openjdk-devel	/*Instala el JDK de Java v11
+java -version 				/*Valida versión Java
+
+/*Instalación maven
+
+sudo yum-config-manager --add-repo http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo
+sudo yum-config-manager --enable epel-apache-maven
+sudo yum install -y apache-maven
+sudo yum install maven
+mvn -version
+
+/*Volver a elegir la versión del Java pues la instalación del maven la cambia.
+sudo alternatives --config java
+1 (selecciona version Java 11)
+sudo alternatives --config javac
+1 (selecciona version javac 11)
+
+
+chmod 777 /home/opc /*asignar permisos
+ls -lha		    /*ver permisos
+	
