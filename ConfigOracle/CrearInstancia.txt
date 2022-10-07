@@ -1,0 +1,20 @@
+Crear Instancia
+
+
+Agregar permisos de acceso
+VNIC -> Subnet -> Default security list
+Agregar reglas de entrada:
+1. -> Source CIDR: 0.0.0.0/0 -> Source port: All -> Destination port: 80
+2. -> Source CIDR: 0.0.0.0/0 -> Source port: All -> Destination port: 8080
+
+Verificar software en instancia en navegador con la dirección IP del server y en gitbash (ver jpg Verifica)
+
+Subir el archivo de ejecución al gitHub y clonarlo en el servidor remoto.
+
+El arcchivo una vez clonado se debe ir hasta la carpeta del target y se ejecuta el .jar
+(java -jar tagert/"archivo jar")
+
+Siempre cerrar la instancia con exit desde el github para evitar bloqueo
+
+
+
