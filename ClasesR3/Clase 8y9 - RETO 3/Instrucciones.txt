@@ -53,6 +53,12 @@ El GET no cambia pero se usan los métodos del repositorio.
 
 se compila desde el application para verificar por errores. si sale 8080 ocupado hay alguna instancia corriendo.
 
+RELACIONES
+Se construyen desde el modelo, primero elimnamos los Getter y Setter para rehacerlos luego de las relaciones.
+Primero se escribe la relación de las tablas
+Luego se utiliza el JsonIgnoreProperties para evitar la reimplementación en sí misma y de otras asociadas.
+se genera un método private según el tipo de relación (Lista u objeto) y se almacena en la variable que se considere.
+
 
 
 
