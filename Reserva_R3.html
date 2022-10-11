@@ -36,17 +36,14 @@
               <label for="id" class="leading-7 text-sm text-gray-600">ID Usuario</label>
               <input type="number" id="ClientId" placeholder="Ingrese ID" name="ClientId" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
             </div>
-            <div class="relative mb-4">
-              <label for="CloudId" class="leading-7 text-sm text-gray-600">Selecciona tu nube</label>
-              <select type="number" id="CloudId" placeholder="Selecciona nube" name="CloudId" class="w-full bg-white rounded border border-gray-300 text-gray-700 py-1 px-3 dark:placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-20 text-base outline-none leading-8 transition-colors">
-                <option disabled selected class="text-gray-700">Selecciona una opción</option>
-                <option value=1>Nube 1</option>
-                <option value=2>Nube 2</option>
-                <option value=3>Nube 3</option>
-              </select>
-            </div>
+            
+            <label for="NubeId" class="leading-7 text-sm text-gray-600">Selecciona la nube</label>
+              <div class="relative mb-2">
+                <div id="res_SelectCloud">
+                </div>
+              </div>
 
-            <label for="clouds" class="leading-7 text-sm text-gray-600">Selecciona Fecha de Inicio</label>
+            <label for="startDate" class="leading-7 text-sm text-gray-600">Selecciona Fecha de Inicio</label>
 
             <div class="relative">
               
@@ -56,7 +53,7 @@
                  <input datepicker datepicker-autohide datepicker-format="yyyy-mm-dd" type="text" id="startDate" name="startDate" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
             </div>
 
-            <label for="clouds" class="leading-7 text-sm text-gray-600">Selecciona Fecha de Entrega</label>
+            <label for="devolutionDate" class="leading-7 text-sm text-gray-600">Selecciona Fecha de Entrega</label>
 
             <div class="relative">
               <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">

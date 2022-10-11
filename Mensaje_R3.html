@@ -31,30 +31,30 @@
         <div class="grid grid-cols-2 gap-1">          
           <div class="container mt-2 px-4 mx-auto">
             <div class="lg:w-full md:w-full bg-neutral-50 rounded-lg px-20 py-2 flex flex-col md:ml-auto w-full mt-2 md:mt-0 relative z-10 shadow-md">
-              <div class="relative mb-4">
+             <!--  <div class="relative mb-4">
                 <label for="id" class="leading-7 text-sm text-gray-600">ID</label>
                 <input type="number" id="id" name="id" placeholder="Ingrese ID"  class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-              </div>
+              </div>-->
               
-              <div class="relative mb-4">
+              <div class="relative mb-1">
                 <label for="Message" class="leading-7 text-sm text-gray-600">Mensaje</label>
-                <textarea type="text" id="Message" name="Message" placeholder="Ingrese mensaje" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                <textarea type="text" id="Message" name="Message" maxlength="250" onkeyup="contar(this, 'Message')" placeholder="Ingrese mensaje" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                <div class="text-sm text-right px-2 text-gray-400"><label id="currentMessage">0</label><label id="maximum">/ 250</label></div>
               </div>  
               <br>
-              <div class="relative mb-4">
-                <label for="id" class="leading-7 text-sm text-gray-600">ID Usuario</label>
-                <input type="number" id="ClientId" placeholder="Ingrese ID" name="ClientId" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+              <label for="ClientId" class="leading-7 text-sm text-gray-600">Selecciona el cliente</label>
+              <div class="relative mb-2">
+                <div id="res_SelectClient">
+                </div>
               </div>
               <br>
-              <div class="relative mb-4">
-                <label for="CloudId" class="leading-7 text-sm text-gray-600">Selecciona tu nube</label>
-                <select type="number" id="CloudId" placeholder="Selecciona nube" name="CloudId" class="w-full bg-white rounded border border-gray-300 text-gray-700 py-1 px-3 dark:placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-20 text-base outline-none leading-8 transition-colors">
-                  <option disabled selected class="text-gray-700">Selecciona una opción</option>
-                  <option value=1>Nube 1</option>
-                  <option value=2>Nube 2</option>
-                  <option value=3>Nube 3</option>
-                </select>
+              
+              <label for="CloudId" class="leading-7 text-sm text-gray-600">Selecciona la nube</label>
+              <div class="relative mb-2">
+                <div id="res_SelectCloud">
+                </div>
               </div>
+
               </div>
               <br>
               <div class="container mb-2 mt-2 mx-auto text-center">

@@ -5,8 +5,9 @@ function leerDatos(tipo){
             datatype:"JSON",
             success:function(respuesta){
             console.log(respuesta);
+            
             $("#res_tabla").empty();
-            updateTabla(respuesta.items, tipo)
+            updateTabla(respuesta, tipo)
             
             }
             });
@@ -34,7 +35,7 @@ function updateTabla(items, tipo){
             myTable+='<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></a></td>'
             myTable+="</tr>";   
         }
- 
+    listar('Cloud')
     break;
 
     case 'Category':
@@ -74,6 +75,8 @@ function updateTabla(items, tipo){
             myTable+='<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></a></td>'
             myTable+="</tr>";   
         }
+
+    listar('Category')
      
     break;
 
@@ -86,10 +89,10 @@ function updateTabla(items, tipo){
 
         for(i=0;i<items.length;i++){
             myTable+="<tr>";
-            myTable+="<td>"+items[i].id+"</td>";
-            myTable+="<td>"+"<a class='text-sm font-bold text-gray-500 text-center hover:text-[#4164B7] cursor-pointer' href='#'  target='_self' onclick='detalle("+items[i].id+", \""+tipo+"\");'>"
+            myTable+="<td>"+items[i].idClient+"</td>";
+            myTable+="<td>"+"<a class='text-sm font-bold text-gray-500 text-center hover:text-[#4164B7] cursor-pointer' href='#'  target='_self' onclick='detalle("+items[i].idClient+", \""+tipo+"\");'>"
             +items[i].name+"</td>";
-            myTable+='<td> <a class="text-center" href="#" onclick="eliminar('+items[i].id+', \''+tipo+'\');">'
+            myTable+='<td> <a class="text-center" href="#" onclick="eliminar('+items[i].idClient+', \''+tipo+'\');">'
             myTable+='<svg class="w-6 h-6 mx-auto hover:text-[#4164B7]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">'
             myTable+='<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></a></td>'
             myTable+="</tr>";   
@@ -106,15 +109,16 @@ function updateTabla(items, tipo){
     
         for(i=0;i<items.length;i++){
             myTable+="<tr>";
-            myTable+="<td>"+items[i].id+"</td>";
-            myTable+="<td>"+"<a class='text-sm font-bold text-gray-500 text-center hover:text-[#4164B7] cursor-pointer' href='#'  target='_self' onclick='detalle("+items[i].id+", \""+tipo+"\");'>"
-            +items[i].messagetext+"</td>";
-            myTable+='<td> <a class="text-center"  href="#" onclick="eliminar('+items[i].id+', \''+tipo+'\');">'
+            myTable+="<td>"+items[i].idMessage+"</td>";
+            myTable+="<td>"+"<a class='text-sm font-bold text-gray-500 text-center hover:text-[#4164B7] cursor-pointer' href='#'  target='_self' onclick='detalle("+items[i].idMessage+", \""+tipo+"\");'>"
+            +items[i].messageText+"</td>";
+            myTable+='<td> <a class="text-center"  href="#" onclick="eliminar('+items[i].idMessage+', \''+tipo+'\');">'
             myTable+='<svg class="w-6 h-6 mx-auto hover:text-[#4164B7]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">'
             myTable+='<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></a></td>'
             myTable+="</tr>";   
         }
-          
+    listar('Cloud')
+    listar('Client')      
     break;
     }
 
@@ -159,15 +163,15 @@ function verDetalle(){
             myTable+="</tr>";
             myTable+="</thead>";
                     
-            for(i=0;i<respuesta.items.length;i++){
-                if(respuesta.items[i].id==id){
+            for(i=0;i<respuesta.length;i++){
+                if(respuesta[i].id==id){
                 myTable+="<tr>";
-                myTable+="<td style='cursor: not-allowed;'>"+respuesta.items[i].id+"</td>";
-                myTable+="<td>"+'<input type="text" id="nombre" value='+ respuesta.items[i].name+' name="nombre" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out"> </div>' + "</td>";
+                myTable+="<td style='cursor: not-allowed;'>"+respuesta[i].id+"</td>";
+                myTable+="<td style='white-space:pre'>"+'<input type="text" id="nombre" value='+respuesta[i].name+' name="nombre" class="whitespace-pre w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 px-4 outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out">' + "</td>";
                 myTable+="<td>";
-                myTable+='<textarea type="text" id="description" name="description" class="w-2/3 bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">'+respuesta.items[i].description+'</textarea>'
+                myTable+='<textarea type="text" id="description" name="description" class="w-2/3 bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">'+respuesta[i].description+'</textarea>'
                 myTable+="</td>";
-                myTable+="<td style='cursor: not-allowed;'>"+respuesta.items[i].clouds+"</td>";
+                myTable+="<td style='cursor: not-allowed;'>"+respuesta[i].clouds+"</td>";
                 myTable+="</tr>"; 
                 } 
             }
@@ -188,16 +192,16 @@ function verDetalle(){
             myTable+="</tr>";
             myTable+="</thead>";
                 
-            for(i=0;i<respuesta.items.length;i++){
-                if(respuesta.items[i].id==id){
+            for(i=0;i<respuesta.length;i++){
+                if(respuesta[i].id==id){
                 myTable+="<tr>";
-                myTable+="<td style='cursor: not-allowed;'>"+respuesta.items[i].id+"</td>";
-                myTable+="<td>"+'<input type="text" id="nombre" value='+ respuesta.items[i].name+' name="nombre" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out"> </div>' + "</td>";
-                myTable+="<td>"+'<input type="text" id="proveedor" value='+respuesta.items[i].brand+' name="proveedor" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out"></input>' + "</td>";
-                myTable+="<td>"+'<input type="number" id="modelo" value='+respuesta.items[i].model+' name="modelo" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out">' + "</td>";
-                myTable+="<td>"+'<input type="number" id="categoryId" value='+respuesta.items[i].category.name+' name="categoryId" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out">' + "</td>";
+                myTable+="<td style='cursor: not-allowed;'>"+respuesta[i].id+"</td>";
+                myTable+="<td>"+'<input type="text" id="nombre" value='+ respuesta[i].name+' name="nombre" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out"> </div>' + "</td>";
+                myTable+="<td>"+'<input type="text" id="proveedor" value='+respuesta[i].brand+' name="proveedor" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out"></input>' + "</td>";
+                myTable+="<td>"+'<input type="number" id="modelo" value='+respuesta[i].year+' name="modelo" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out">' + "</td>";
+                myTable+="<td>"+'<input type="text" id="categoryId" value='+respuesta[i].category.name+' name="categoryId" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out">' + "</td>";
                 myTable+="<td>";
-                myTable+='<textarea type="text" id="description" name="description" class="w-2/3 bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">'+respuesta.items[i].description+'</textarea>'
+                myTable+='<textarea type="text" id="description" name="description" class="w-2/3 bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">'+respuesta[i].description+'</textarea>'
                 myTable+="</td>";
                 myTable+="</tr>"; 
                 } 
@@ -217,13 +221,13 @@ function verDetalle(){
             myTable+="</tr>";
             myTable+="</thead>";
 
-            for(i=0;i<respuesta.items.length;i++){
-                if(respuesta.items[i].id==id){
+            for(i=0;i<respuesta.length;i++){
+                if(respuesta[i].idClient==id){
                 myTable+="<tr>";
-                myTable+="<td style='cursor: not-allowed;'>"+respuesta.items[i].id+"</td>";
-                myTable+="<td>"+'<input type="text" id="nombre" value='+ respuesta.items[i].name+' name="nombre" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out"> </div>' + "</td>";
-                myTable+="<td>"+'<input type="text" id="email" value='+respuesta.items[i].email+' name="email" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out">' + "</td>";
-                myTable+="<td>"+'<input type="number" id="edad" value='+respuesta.items[i].age+' name="edad" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out">' + "</td>";
+                myTable+="<td style='cursor: not-allowed;'>"+respuesta[i].idClient+"</td>";
+                myTable+="<td>"+'<input type="text" id="nombre" value='+ respuesta[i].name+' name="nombre" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out"> </div>' + "</td>";
+                myTable+="<td style='cursor: not-allowed;'>"+respuesta[i].email + "</td>";
+                myTable+="<td>"+'<input type="number" id="edad" value='+respuesta[i].age+' name="edad" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out">' + "</td>";
                 myTable+="</tr>"; 
                 }  
             }
@@ -239,12 +243,12 @@ function verDetalle(){
             myTable+="</tr>";
             myTable+="</thead>";
 
-            for(i=0;i<respuesta.items.length;i++){
-                if(respuesta.items[i].id==id){   
+            for(i=0;i<respuesta.length;i++){
+                if(respuesta[i].idMessage==id){   
                 myTable+="<tr>";
-                myTable+="<td style='cursor: not-allowed;'>"+respuesta.items[i].id+"</td>";
+                myTable+="<td style='cursor: not-allowed;'>"+respuesta[i].idMessage+"</td>";
                 myTable+="<td>";
-                myTable+='<textarea type="text" id="Message" name="Message" class="w-2/3 bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">'+respuesta.items[i].messagetext+'</textarea>'
+                myTable+='<textarea type="text" id="Message" name="Message" class="w-2/3 bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">'+respuesta[i].messageText+'</textarea>'
                 myTable+="</td>";
                 myTable+="</tr>";  
                 }
@@ -270,17 +274,17 @@ function verDetalle(){
             myTable+="</tr>";
             myTable+="</thead>";
                     
-            for(i=0;i<respuesta.items.length;i++){
-                if(respuesta.items[i].id==id){
+            for(i=0;i<respuesta.length;i++){
+                if(respuesta[i].id==id){
                 myTable+="<tr>";
-                myTable+="<td style='cursor: not-allowed;'>"+respuesta.items[i].id+"</td>";
-                myTable+="<td>"+respuesta.items[i].cloud.name+"</td>";
-                myTable+="<td>"+respuesta.items[i].client.id+"</td>";
-                myTable+="<td>"+respuesta.items[i].client.name+"</td>";
-                myTable+="<td>"+respuesta.items[i].client.email+"</td>";
-                myTable+="<td>"+'<input type="text" id="nombre" value='+respuesta.items[i].startDate+' name="nombre" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out"> </div>' + "</td>";
-                myTable+="<td>"+'<input type="text" id="nombre" value='+respuesta.items[i].devolutionDate+' name="nombre" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out"> </div>' + "</td>";
-                myTable+="<td>"+respuesta.items[i].score+"</td>";
+                myTable+="<td style='cursor: not-allowed;'>"+respuesta[i].id+"</td>";
+                myTable+="<td>"+respuesta[i].cloud.name+"</td>";
+                myTable+="<td>"+respuesta[i].client.id+"</td>";
+                myTable+="<td>"+respuesta[i].client.name+"</td>";
+                myTable+="<td>"+respuesta[i].client.email+"</td>";
+                myTable+="<td>"+'<input type="text" id="nombre" value='+respuesta[i].startDate+' name="nombre" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out"> </div>' + "</td>";
+                myTable+="<td>"+'<input type="text" id="nombre" value='+respuesta[i].devolutionDate+' name="nombre" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out"> </div>' + "</td>";
+                myTable+="<td>"+respuesta[i].score+"</td>";
                 myTable+="</tr>"; 
                 } 
             }
@@ -321,7 +325,7 @@ function crearReg(tipo){
             //id:$("#id").val(),
             brand:$("#proveedor").val(),
             year:$("#modelo").val(),
-            categoryId:$("#categoryId").val(),
+            category:{"id":$("#CategoryId").val()},
             name:$("#nombre").val(),
             description:$("#description").val(),              
             }; //Almaceno info en variables
@@ -339,9 +343,9 @@ function crearReg(tipo){
     case 'Message':
         myData={    
             //id:$("#id").val(),
-            messagetext:$("#message").val(),
-            idClient:$("#ClientId").val(),
-            idCloud:$("#CloudId").val(),            
+            messageText:$("#Message").val(),
+            cloud:{"id":$("#CloudId").val()},
+            client:{"idClient":$("#ClientId").val()},            
             }; //Almaceno info en variables
             
     break;
@@ -351,8 +355,8 @@ function crearReg(tipo){
         //id:$("#id").val(),
         startDate:$("#startDate").val(),
         devolutionDate:$("#devolutionDate").val(),   
-        idClient:$("#ClientId").val(),
-        idCloud:$("#CloudId").val(),           
+        cloud:{"id":$("#CloudId").val()},
+        client:{"idClient":$("#ClientId").val()},          
         }; //Almaceno info en variables
     break;
 
@@ -381,7 +385,7 @@ function crearReg(tipo){
                 $("#nombre").val("");
                 $("#proveedor").val("");
                 $("#modelo").val("");
-                $("#categoryId").val("");
+                $("#CategoryId").val("");
                 $("#description").val("");
             break;
             case 'Client':
@@ -436,7 +440,7 @@ function ActualizaReg(){
             id:id,
             brand:$("#proveedor").val(),
             year:$("#modelo").val(),
-            categoryId:$("#categoryId").val(),
+            categoryId:$("#CategoryId").val(),
             name:$("#nombre").val(),
             description:$("#description").val(),            
             }; //Almaceno info en variables     
@@ -444,7 +448,7 @@ function ActualizaReg(){
 
     case 'Client':
         myData={    
-            id:id,
+            idClient:id,
             name:$("#nombre").val(),
             email:$("#email").val(),
             age:$("#edad").val(),              
@@ -454,9 +458,9 @@ function ActualizaReg(){
     case 'Message':
         myData={    
             id:id,
-            messagetext:$("#message").val(), 
-            idClient:$("#ClientId").val(),
-            idCloud:$("#CloudId").val(),            
+            messageText:$("#Message").val(), 
+            cloud:{"id":$("#CloudId").val()},
+            client:{"idClient:":$("#ClientId").val()},          
             }; //Almaceno info en variables
     break;
 
@@ -465,8 +469,8 @@ function ActualizaReg(){
             id:id,
             startDate:$("#startDate").val(),
             devolutionDate:$("#devolutionDate").val(),
-            idClient:$("#ClientId").val(),
-            idCloud:$("#CloudId").val(),              
+            cloud:{"id":$("#CloudId").val()},
+            client:{"idClient":$("#ClientId").val()},           
             }; //Almaceno info en variables
     break;
 
@@ -501,7 +505,7 @@ function ActualizaReg(){
                 $("#id").val("");
                 $("#nombre").val("");
                 $("#proveedor").val("");
-                $("#categoryId").val("");
+                $("#CategoryId").val("");
                 $("#modelo").val("");
                 $("#description").val("");
             break;
@@ -548,3 +552,43 @@ function eliminar(id, tipo){
 
 
 }
+
+function listar(tipo){
+
+    $.ajax({
+        url:"http://localhost:8080/api/"+tipo+"/all",
+        type:"GET",
+        datatype:"JSON",
+        success:function(respuesta){
+        console.log(respuesta);
+        //console.log(respuesta.entries);
+        $("#res_Select"+tipo).empty();
+        
+        let mySelect = '<select type="number" id="'+tipo+'Id" name="'+tipo+'Id" class="w-full bg-white rounded border border-gray-300 text-gray-700 py-1 px-3 dark:placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-20 text-base outline-none leading-8 transition-colors">'
+        mySelect += '<option disabled selected class="text-gray-700">Selecciona una opción</option>'
+        for(i=0;i<respuesta.length;i++){
+            console.log(respuesta[i]);  
+            
+            if(tipo=="Client"){
+                mySelect += '<option value='+respuesta[i].idClient+'>'+respuesta[i].name+'</option>'
+            }else {
+            mySelect += '<option value='+respuesta[i].id+'>'+respuesta[i].name+'</option>'}
+        }
+        mySelect += '</select>'
+      
+        $("#res_Select"+tipo).append(mySelect)
+
+        console.log(mySelect);
+
+        }
+        });
+
+
+};
+
+function contar(valor, label){
+    let characterCount = valor.value.length,
+        current = $('#current'+label);
+    current.text(characterCount);
+   
+ };
