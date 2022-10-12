@@ -197,7 +197,12 @@ function verDetalle(){
                 myTable+="<td>";
                 myTable+='<textarea type="text" id="description" name="description" class="w-2/3 bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">'+respuesta[i].description+'</textarea>'
                 myTable+="</td>";
-                myTable+="<td style='cursor: not-allowed;'>"+respuesta[i].clouds+"</td>";
+                myTable+="<td>";
+                myTable+='<textarea readonly type="text" id="nubes" name="nubes" style="cursor: not-allowed" class="w-2/3 bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">'
+                console.log(respuesta[i].clouds.length)
+                for(j=0;j<respuesta[i].clouds.length;j++){myTable+=respuesta[i].clouds[j].name+" "}
+                myTable+="</textarea>"
+                myTable+="</td>";
                 myTable+="</tr>"; 
                 } 
             }
@@ -224,8 +229,16 @@ function verDetalle(){
                 myTable+="<td style='cursor: not-allowed;'>"+respuesta[i].id+"</td>";
                 myTable+="<td>"+'<input type="text" id="nombre" value='+ respuesta[i].name+' name="nombre" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out"> </div>' + "</td>";
                 myTable+="<td>"+'<input type="text" id="proveedor" value='+respuesta[i].brand+' name="proveedor" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out"></input>' + "</td>";
-                myTable+="<td>"+'<input type="number" id="modelo" value='+respuesta[i].year+' name="modelo" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out">' + "</td>";
-                myTable+="<td>"+'<input type="text" id="categoryId" value='+respuesta[i].category.name+' name="categoryId" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out">' + "</td>";
+                myTable+="<td>"+'<input type="number" max="2050" min="1980" id="modelo" value='+respuesta[i].year+' name="modelo" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out invalid:border-red-500 invalid:text-red-600 invalid:ring-2';
+                myTable+='invalid:ring-red-200 focus:invalid:border-red-500 focus:invalid:text-red-600 focus:invalid:ring-2 focus:invalid:ring-red-200">' + "</td>"
+                
+                //myTable+="<td>"+'<input type="text" id="categoryId" value='+respuesta[i].category.name+' name="categoryId" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out">' + "</td>";
+                myTable+="<td>";
+                myTable+='<select type="number" id="categoryId" name="categoryId" class="w-full bg-white rounded border border-gray-300 text-gray-700 py-1 px-3 dark:placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-20 text-base outline-none leading-8 transition-colors">'
+                myTable+='<option selected class="text-gray-700" value='+respuesta[i].category.id+'>'+respuesta[i].category.name+'</option>'
+                listarDetalle(0, 0, respuesta[i].category.id);
+                myTable+=sessionStorage.getItem('mySelectCat');
+                myTable+="</td>";
                 myTable+="<td>";
                 myTable+='<textarea type="text" id="description" name="description" class="w-2/3 bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">'+respuesta[i].description+'</textarea>'
                 myTable+="</td>";
@@ -253,7 +266,8 @@ function verDetalle(){
                 myTable+="<td style='cursor: not-allowed;'>"+respuesta[i].idClient+"</td>";
                 myTable+="<td>"+'<input type="text" id="nombre" value='+ respuesta[i].name+' name="nombre" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out"> </div>' + "</td>";
                 myTable+="<td style='cursor: not-allowed;'>"+respuesta[i].email + "</td>";
-                myTable+="<td>"+'<input type="number" id="edad" value='+respuesta[i].age+' name="edad" class="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out">' + "</td>";
+                myTable+="<td>"+'<input type="number" min="18" max="99" id="edad" value='+respuesta[i].age+' name="edad" class="peer w-1/2 bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base text-center outline-none text-gray-700 leading-8 transition-colors duration-200 ease-in-out">';
+                myTable+='<p class="mt-2 invisible peer-invalid:visible text-red-600 text-xs">Ingrese edad permitida "(entre 18 y 99)" </p>'+ "</td>";
                 myTable+="</tr>"; 
                 }  
             }
@@ -265,7 +279,9 @@ function verDetalle(){
             myTable+="<thead>";
             myTable+="<tr>";
             myTable+="<th>ID</th>";
-            myTable+="<th>Mensaje</th>";       
+            myTable+="<th>Mensaje</th>";
+            myTable+="<th>Cliente</th>";
+            myTable+="<th>Nube</th>";       
             myTable+="</tr>";
             myTable+="</thead>";
 
@@ -275,6 +291,18 @@ function verDetalle(){
                 myTable+="<td style='cursor: not-allowed;'>"+respuesta[i].idMessage+"</td>";
                 myTable+="<td>";
                 myTable+='<textarea type="text" id="Message" name="Message" class="w-2/3 bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out">'+respuesta[i].messageText+'</textarea>'
+                myTable+="</td>";
+                myTable+="<td>";
+                myTable+='<select type="number" id="ClientId" name="ClientId" class="w-full bg-white rounded border border-gray-300 text-gray-700 py-1 px-3 dark:placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-20 text-base outline-none leading-8 transition-colors">'
+                myTable+='<option selected class="text-gray-700" value='+respuesta[i].client.idClient+'>'+respuesta[i].client.name+'</option>'
+                listarDetalle(respuesta[i].client.idClient, respuesta[i].cloud.id);
+                myTable+=sessionStorage.getItem('mySelectClient');
+                myTable+="</td>";
+                myTable+="<td>"; 
+                myTable+='<select type="number" id="CloudId" name="CloudId" class="w-full bg-white rounded border border-gray-300 text-gray-700 py-1 px-3 dark:placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-20 text-base outline-none leading-8 transition-colors">'
+                myTable+='<option selected class="text-gray-700" value='+respuesta[i].cloud.id+'>'+respuesta[i].cloud.name+'</option>'
+                myTable+=sessionStorage.getItem('mySelectCloud');
+                myTable+='</select>'
                 myTable+="</td>";
                 myTable+="</tr>";  
                 }
@@ -385,7 +413,7 @@ function crearReg(tipo){
             name:$("#nombre").val(),
             email:$("#email").val(),
             age:$("#edad").val(),
-            password:$("password").val(),              
+            password:$("#password").val(),              
             }; //Almaceno info en variables
             
     break;
@@ -422,7 +450,7 @@ function crearReg(tipo){
             //id:$("#id").val(),
             name:$("#nombre").val(),
             email:$("#email").val(),
-            password:$("password").val(),             
+            password:$("#password").val(),         
             }; //Almaceno info en variables
             
     break;
@@ -520,7 +548,7 @@ function ActualizaReg(){
             id:id,
             brand:$("#proveedor").val(),
             year:$("#modelo").val(),
-            categoryId:$("#CategoryId").val(),
+            category:{"id":$("#categoryId").val()},
             name:$("#nombre").val(),
             description:$("#description").val(),            
             }; //Almaceno info en variables     
@@ -541,7 +569,7 @@ function ActualizaReg(){
             idMessage:id,
             messageText:$("#Message").val(), 
             cloud:{"id":$("#CloudId").val()},
-            client:{"idClient:":$("#ClientId").val()},          
+            client:{"idClient":$("#ClientId").val()},          
             }; //Almaceno info en variables
     break;
 
@@ -586,7 +614,7 @@ function ActualizaReg(){
         datatype:"JSON", //Tipo de datos a enviar
         success:function(respuesta){
             $("#res_tabla").empty();
-
+            
             switch(tipo){
             case 'Reservation':
                 $("#id").val("");
@@ -602,6 +630,7 @@ function ActualizaReg(){
                 $("#description").val("");
             break;
             case 'Cloud':
+                listarDetalle(0, 0, myData.category.id);
                 $("#id").val("");
                 $("#nombre").val("");
                 $("#proveedor").val("");
@@ -616,10 +645,13 @@ function ActualizaReg(){
                 $("#edad").val("");
             break;
             case 'Message':
+                
+                listarDetalle(myData.client.idClient, myData.cloud.id);
                 $("#id").val("");
                 $("#mensaje").val("");
                 $("#ClientId").val("");
                 $("#CloudId").val("");
+
             break;
             case 'Score': 
                 $("#id").val("");
@@ -636,6 +668,7 @@ function ActualizaReg(){
         }
 
         verDetalle();
+        
         alert("Se han actualizado los datos");
 
         }
@@ -694,6 +727,64 @@ function listar(tipo){
         }
         });
 
+
+};
+
+function listarDetalle(idClient, idCloud, idCat){
+
+    $.ajax({
+        url:"http://localhost:8080/api/Client/all",
+        type:"GET",
+        datatype:"JSON",
+        success:function(respuesta){
+        //console.log(respuesta);
+        //console.log(respuesta.entries);       
+        let mySelectClient = ""
+        for(i=0;i<respuesta.length;i++){
+            if(respuesta[i].idClient!=idClient)
+            {mySelectClient += '<option value='+respuesta[i].idClient+'>'+respuesta[i].name+'</option>'}
+        }
+        
+             
+       sessionStorage.setItem('mySelectClient',mySelectClient);
+        }
+        });
+
+    $.ajax({
+        url:"http://localhost:8080/api/Cloud/all",
+        type:"GET",
+        datatype:"JSON",
+        success:function(respuesta){
+        //console.log(respuesta);
+        //console.log(respuesta.entries);
+        let mySelectCloud = ""
+            
+        for(i=0;i<respuesta.length;i++){
+            if(respuesta[i].id!=idCloud)
+            mySelectCloud += '<option value='+respuesta[i].id+'>'+respuesta[i].name+'</option>'}
+                 
+            sessionStorage.setItem('mySelectCloud',mySelectCloud);
+        }
+            
+        });
+
+    $.ajax({
+        url:"http://localhost:8080/api/Category/all",
+        type:"GET",
+        datatype:"JSON",
+        success:function(respuesta){
+        //console.log(respuesta);
+        //console.log(respuesta.entries);
+        let mySelectCat = ""
+                
+        for(i=0;i<respuesta.length;i++){
+            if(respuesta[i].id!=idCat)
+            mySelectCat += '<option value='+respuesta[i].id+'>'+respuesta[i].name+'</option>'}
+               
+            sessionStorage.setItem('mySelectCat',mySelectCat);
+            }
+                
+            });
 
 };
 
