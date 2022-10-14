@@ -1,0 +1,175 @@
+todo el reto5 se hace en los metodos de reservacion
+
+demo.Interface
+Reservation
+
+ public List<Reservation> findAllByStatus (String status);
+    
+    public List<Reservation> findAllByStartDateAfterAndStartDateBefore (Date datoUno, Date datoDos); 
+    
+    @Query("SELECT c.client, COUNT(c.client) from Reservation AS c group by c.client order by COUNT(c.client) DESC")
+    public List<Object[]> countTotalReservationByClient();
+    
+}
+
+demo.Repositorio
+ReservationRepository
+
+ ////////////////reto5////////////////////////////
+       
+ nos paramos en la carpeta demo.Repositorio click derecho y crear nueva clase en nombre colocar CountClient y enter     
+
+CountClient
+
+private Long total;
+private Client client;
+
+click derecho  insercod y crear un constructor los dos metodos y queda asi:
+
+public CountClient(Long total, Client client) {
+        this.total = total;
+        this.client = client;
+    }
+
+nuevamente click derecho  insercod y crear los getter and setter todos (tres metodos) queda asi:
+
+public Long getTotal() {
+        return total;
+    }
+
+    public void setTotal(Long total) {
+        this.total = total;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+
+ReservationRepository
+
+ public List<Reservation> getReservationByStatus(String status){
+           return reservationCrudRepository.findAllByStatus(status);
+       }
+       
+       public List<Reservation> informePeriodoTiempoReservas(Date a, Date b ){
+           return reservationCrudRepository.findAllByStartDateAfterAndStartDateBefore(a, b);
+       }
+
+       
+       public List<CountClient> getTopClient(){
+           List<CountClient> res = new ArrayList<>();
+           List<Object[]> report = reservationCrudRepository.countTotalReservationByClient();
+           for(int i=0;i<report.size();i++){
+               res.add(new CountClient((Long)report.get(i)[1],(Client)report.get(i)[0]));
+           }
+           return res;
+       }
+}
+
+se importan los paquetes
+
+demo.Servicio
+
+nos paramos en la carpeta demo.Servicio click derecho y crear nueva clase en nombre colocar Status y enter   
+
+private int completed;
+private int cancelled;
+
+click derecho  insercod y crear un constructor y queda asi:
+
+public Status(int completed, int cancelled) {
+        this.completed = completed;
+        this.cancelled = cancelled;
+    }
+
+nuevamente click derecho  insercod y crear los getter and setter todos (tres metodos) queda asi:
+
+public int getCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(int completed) {
+        this.completed = completed;
+    }
+
+    public int getCancelled() {
+        return cancelled;
+    }
+
+    public void setCancelled(int cancelled) {
+        this.cancelled = cancelled;
+    }
+
+ReservationService
+
+public Status getReservationStatusReport(){
+         List<Reservation> completed = reservationRepository.getReservationByStatus("completed");
+         List<Reservation> cancelled = reservationRepository.getReservationByStatus("cancelled");
+         return new Status(completed.size(),cancelled.size());
+     } 
+     
+     public List<Reservation> informePeriodoTiempoReservas(String datoA, String datoB){
+         SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
+         Date a = new Date();
+         Date b = new Date();
+         
+         try{
+             a = parser.parse(datoA);
+             b = parser.parse(datoB);
+         }catch(ParseException e){
+             e.printStackTrace();
+         }
+         if(a.before(b)){
+            return reservationRepository.informePeriodoTiempoReservas(a, b);
+         }else{
+             return new ArrayList<>();
+         }
+     }
+     
+     public List<CountClient> getTopClients(){
+         return reservationRepository.getTopClient();
+     } 
+
+}
+
+demo.controlador
+ReservationRepository
+
+////////////////////reto 5////////////////////////////////
+       
+     public Status getReservationStatusReport(){
+         List<Reservation> completed = reservationRepository.getReservationByStatus("completed");
+         List<Reservation> cancelled = reservationRepository.getReservationByStatus("cancelled");
+         return new Status(completed.size(),cancelled.size());
+     } 
+     
+     public List<Reservation> informePeriodoTiempoReservas(String datoA, String datoB){
+         SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
+         Date a = new Date();
+         Date b = new Date();
+         
+         try{
+             a = parser.parse(datoA);
+             b = parser.parse(datoB);
+         }catch(ParseException e){
+             e.printStackTrace();
+         }
+         if(a.before(b)){
+            return reservationRepository.informePeriodoTiempoReservas(a, b);
+         }else{
+             return new ArrayList<>();
+         }
+     }
+     
+     public List<CountClient> getTopClients(){
+         return reservationRepository.getTopClient();
+     }
+
+
+se importan los paquetes
+

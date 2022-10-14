@@ -562,7 +562,6 @@ function crearReg(tipo){
     });
 }
 
-
 function ActualizaReg(){
     
     let id = sessionStorage.getItem('id');
@@ -699,10 +698,11 @@ function ActualizaReg(){
                 $("#scoreText").val("");
                 $("#ReservationId").val("");
             break;
-            case 'Client':
+            case 'Admin':
                 $("#id").val("");
                 $("#nombre").val("");
-                $("#email").val("");               
+                $("#email").val("");
+                $("#password").val("");               
             break;
       
         }
@@ -968,4 +968,149 @@ function calificar(puntaje){
     });
     
 }
+
+
+function consultar(URL){
+    window.open(URL, 'Consultas', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=1,width=960,height=680,left = 240,top = 50');
+    
+}
+
+function consultarReportes(tipo){
+
+    let myTable;
+    
+
+    myTable += '<table class="table-auto text-gray-600 text-center text-sm">';
+
+    switch(tipo){
+        case 'Reporte_Fecha':
+            
+            startDate = $("#startDate").val(),
+            devolutionDate = $("#devolutionDate").val(),
+            
+            Reporte_Fecha(startDate, devolutionDate)
+        break;
+        case 'Reporte_Cantidades':
+            
+            Reporte_Cantidades("report-status")
+        break;
+        case 'Reporte_TopClient':
+            
+            Reporte_TopClient("report-clients")
+            
+        break;
+
+    }
+    
+       
+    myTable+= "</table>";
+    
+   
+
+    $("#res_Table").append(myTable)
+    
+
+}
+
+function close_window(){
+    window.close();
+}
+
+function Reporte_Fecha(startDate, devolutionDate){
+    let myTable={}
+   console.log("http://localhost:8080/api/Reservation/report-dates/"+startDate+"/"+devolutionDate)
+   var inicio = startDate.substr(0,4)+startDate.substr(5,2)+startDate.substr(8,2)
+   console.log(inicio)
+    var fin = devolutionDate.substr(0,4)+devolutionDate.substr(5,2)+devolutionDate.substr(8,2)
+    console.log(fin)
+    if(inicio>fin){alert("ingrese fechas correctamente")}else{
+
+
+   $.ajax({
+        url:"http://localhost:8080/api/Reservation/report-dates/"+startDate+"/"+devolutionDate,
+        type:"GET",
+        datatype:"JSON",
+        success:function(respuesta){
+        
+        $("#res_tabla").empty();
+        myTable+="<thead>";
+        myTable+="<tr>";
+        myTable+="<th>Cantidad en el intervalo</th>";       
+        myTable+="</tr>";
+        myTable+="</thead>";
+        myTable+="<tr>";
+
+        myTable+="<td>"+respuesta.completed.length+"</td>"
+
+        $("#res_tabla").append(myTable)
+
+        }
+        });
+    console.log("OK")
+    }
+};
+
+function Reporte_Cantidades(tipo){
+    let myTable={}
+    console.log("http://localhost:8080/api/Reservation/"+tipo)
+    $.ajax({
+        url:"http://localhost:8080/api/Reservation/"+tipo,
+        type:"GET",
+        datatype:"JSON",
+        success:function(respuesta){
+        
+        
+        $("#res_tabla").empty();
+        myTable+="<thead>";
+        myTable+="<tr>";
+        myTable+="<th>Tipo</th>";
+        myTable+="<th>Total</th>";       
+        myTable+="</tr>";
+        myTable+="</thead>";
+        myTable+="<tr>";
+        myTable+="<td>Completada</td>"
+        myTable+="<td>"+respuesta.completed+"</td>";
+        myTable+="</tr>";
+        myTable+="<tr>";
+        myTable+="<td>Cancelada</td>"
+        myTable+="<td>"+respuesta.cancelled+"</td>";
+        myTable+="</tr>";
+
+        $("#res_tabla").append(myTable)
+        
+        }
+        });
+};
+
+function Reporte_TopClient(tipo){
+    
+    console.log("http://localhost:8080/api/Reservation/"+tipo)
+    $.ajax({
+        url:"http://localhost:8080/api/Reservation/"+tipo,
+        type:"GET",
+        datatype:"JSON",
+        success:function(respuesta){
+                
+        $("#res_tabla").empty();
+        
+        myTable+="<thead>";
+        myTable+="<tr>";
+        myTable+="<th>Cliente</th>";
+        myTable+="<th>Total</th>";      
+        myTable+="</tr>";
+        myTable+="</thead>";
+        myTable+="<tr>";
+        for(i=0;i<respuesta.length;i++){
+        myTable+="<td>Cliente</td>"
+        myTable+="<td>"+respuesta[i].client.name+"</td>";
+        myTable+="<td>Total</td>"
+        myTable+="<td>"+respuesta[i].total+"</td>";
+        }
+        $("#res_tabla").append(myTable)
+        
+        }
+    
+        });
+};
+
  

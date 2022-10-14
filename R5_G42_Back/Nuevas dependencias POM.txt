@@ -1,0 +1,12 @@
+Dependencias de seguridad -> darle click a la M
+
+<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-client</artifactId>
+            <version>2.5.4</version>
+        </dependency>
